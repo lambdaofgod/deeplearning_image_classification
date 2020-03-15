@@ -1,0 +1,4 @@
+guildai
+tensorflow-gpu
+nbdev
+tqdm
