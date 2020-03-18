@@ -2,3 +2,7 @@ guildai
 tensorflow-gpu
 nbdev
 tqdm
+pandas
+scikit-learn
+matplotlib
+Pillow

@@ -1,0 +1,7 @@
+basic_model_training:
+    main: deeplearning_image_classification/training
+    flags-import: all 
+    requires:
+        - file: data
+    sourcecode:
+        root: deeplearing_image_classification
