@@ -6,3 +6,4 @@ pandas
 scikit-learn
 matplotlib
 Pillow
+keras_applications @ https://github.com/lambdaofgod/keras-applications
