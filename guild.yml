@@ -1,7 +1,29 @@
-basic_model_training:
-    main: deeplearning_image_classification/training
-    flags-import: all 
-    requires:
-        - file: data
-    sourcecode:
-        root: deeplearing_image_classification
+- model: deeplearing_image_classification
+  operations:
+    train_model:
+        main: deeplearning_image_classification/training
+        flags-import: all 
+        requires:
+            - file: data
+        sourcecode:
+            root: deeplearing_image_classification
+        output-scalars:
+            acc: 'acc: (\value)'
+            val_acc: 'acc: (\value)'
+            precision: 'precision: (\value)'
+            val_precision: 'val_precision: (\value)'
+            recall: 'recall: (\value)'
+            val_recall: 'val_recall: (\value)'
+    evaluate:
+        main: deeplearning_image_classification/evaluation
+        requires:
+            - file: data
+            - model
+        sourcecode:
+            root: deeplearing_image_classification
+  resources:
+    model:
+        path: data
+        sources:
+            - operation: train_model
+              select: model.hdf5
