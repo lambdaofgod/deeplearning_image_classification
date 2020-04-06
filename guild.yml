@@ -14,6 +14,8 @@
             val_precision: 'val_precision: (\value)'
             recall: 'recall: (\value)'
             val_recall: 'val_recall: (\value)'
+            top_k_accuracy: 'top_k_categorical_accuracy: (\value)'
+            val_top_k_accuracy: 'val_top_k_categorical_accuracy: (\value)'
     evaluate:
         main: deeplearning_image_classification/evaluation
         requires:
@@ -21,9 +23,16 @@
             - model
         sourcecode:
             root: deeplearing_image_classification
+        output-scalars:
+            acc: 'acc: (\value)'
+            precision: 'precision: (\value)'
+            recall: 'recall: (\value)'
+            top_k_accuracy: 'top_k_categorical_accuracy: (\value)'
   resources:
     model:
-        path: data
+        sources:
+
+  resources:
+    model:
         sources:
             - operation: train_model
-              select: model.hdf5
