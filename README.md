@@ -22,17 +22,37 @@ pip install -e .
 
 
 ### Data setup
+
+#### Full dataset
 ```
 bash scripts/download_data.sh
 bash scripts/prepare_data.sh
 python data_loading.py 
 ```
 
-### Training
+#### Smaller dataset version (10k training and 1k validation images)
 
+This version requires `gsutil` installed, because files are hosted on Google Cloud Storage.
 
 ```
-guild run basic_training
+bash scripts/download_small_data.sh
+bash scripts/prepare_small_data.sh
+python data_loading.py 
+```
+
+
+
+### Training
+
+Smaller version
+```
+guild run train_model
+```
+
+Full version
+
+```
+guild run train_model --sample_size all --val_size 10000
 ```
 
 Hyperparameters are inferred from deeplearning_image_classification/training.py
