@@ -1,5 +1,5 @@
-cat data/PlantCLEF2019TrainFull.tar.gz.part-* > data/PlantCLEF2019TrainFull.tar.gz
-mkdir data/images_train
-mkdir data/images_test
-tar -xvf data/PlantCLEF2019TrainFull.tar.gz --directory data/images_train/
-tar -xvf data/PlantCLEF2019Test.tar.gz --directory data/images_test/
+mkdir data
+mkdir data/test
+mkdir data/train
+unzip train_images -d data/train
+unzip test_images -d data/test        
