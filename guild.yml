@@ -18,8 +18,10 @@
             root: deeplearing_image_classification
         output-scalars:
             accuracy: 'accuracy: (\value)'
+            f1: 'f1: (\value)'
             loss: 'loss: (\value)'
-            val_accuracy: 'accuracy: (\value)'
+            val_accuracy: 'val_accuracy: (\value)'
+            val_f1: 'val_f1: (\value)'
             val_loss: 'val_loss: (\value)'
   resources:
     model:
