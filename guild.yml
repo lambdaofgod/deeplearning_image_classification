@@ -1,33 +1,26 @@
 - model: deeplearing_image_classification
   operations:
-    train_model:
-        main: deeplearning_image_classification/training
-        flags-import: all 
+    foodc_train_model:
+        main: deeplearning_image_classification/foodc
+        flags-import:
+            - freeze_range 
+            - learning_rate 
+            - rotation_range 
+            - featurewise_center 
+            - featurewise_std_normalization 
+            - zoom_range 
+            - width_shift_range 
+            - height_shift_range 
+            - shear_range 
         requires:
             - file: data
         sourcecode:
             root: deeplearing_image_classification
         output-scalars:
-            acc: 'acc: (\value)'
-            val_acc: 'acc: (\value)'
-            precision: 'precision: (\value)'
-            val_precision: 'val_precision: (\value)'
-            recall: 'recall: (\value)'
-            val_recall: 'val_recall: (\value)'
-            top_k_accuracy: 'top_k_categorical_accuracy: (\value)'
-            val_top_k_accuracy: 'val_top_k_categorical_accuracy: (\value)'
-    evaluate:
-        main: deeplearning_image_classification/evaluation
-        requires:
-            - file: data
-            - model
-        sourcecode:
-            root: deeplearing_image_classification
-        output-scalars:
-            acc: 'acc: (\value)'
-            precision: 'precision: (\value)'
-            recall: 'recall: (\value)'
-            top_k_accuracy: 'top_k_categorical_accuracy: (\value)'
+            accuracy: 'accuracy: (\value)'
+            loss: 'loss: (\value)'
+            val_accuracy: 'accuracy: (\value)'
+            val_loss: 'val_loss: (\value)'
   resources:
     model:
         sources:
@@ -35,4 +28,4 @@
   resources:
     model:
         sources:
-            - operation: train_model
+            - operation: foodc_train_model
